@@ -1,0 +1,76 @@
+<nz-layout class="layout">
+  <nz-header>
+    <a routerLink="">
+      <div class="logo"></div>
+    </a>
+    <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
+      <li nz-menu-item *ngFor="let item of navList">{{ item }}</li>
+    </ul>
+    <div class="header-menu-btn">
+      <button nz-button nzType="text" nzShape="circle" nzGhost (click)="open()">
+        <ng-icon name="matMenuOutline" size="24px"></ng-icon>
+      </button>
+    </div>
+  </nz-header>
+  <nz-content class="outer-content">
+    <nz-layout class="inner-layout">
+      <nz-sider nzWidth="200px" nzTheme="light">
+        <ul nz-menu nzMode="inline" class="sider-menu">
+          <li nz-submenu *ngFor="let nav of subnavList" [nzTitle]="nav.parent">
+            <ul>
+              <li nz-menu-item *ngFor="let child of nav.child">
+                <a routerLink="product">{{ child }}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nz-sider>
+      <nz-content class="inner-content">
+        <div class="dropdown-menu">
+          <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+            Menu
+            <span nz-icon nzType="down"></span>
+          </a>
+          <hr />
+        </div>
+        <router-outlet />
+      </nz-content>
+    </nz-layout>
+
+    <nz-footer>Custom App ©2020</nz-footer>
+  </nz-content>
+</nz-layout>
+
+<nz-drawer
+  [nzClosable]="false"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  nzTitle=" "
+  [nzExtra]="extra"
+  (nzOnClose)="close()"
+  [nzBodyStyle]="{ padding: 0 }"
+>
+  <ng-container *nzDrawerContent>
+    <ul nz-menu nzMode="vertical">
+      <li nz-menu-item *ngFor="let item of navList">{{ item }}</li>
+    </ul>
+  </ng-container>
+</nz-drawer>
+
+<ng-template #extra>
+  <button nz-button nzType="text" (click)="close()">
+    <ng-icon name="matCloseOutline" size="24px"></ng-icon>
+  </button>
+</ng-template>
+
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-submenu *ngFor="let nav of subnavList" [nzTitle]="nav.parent">
+      <ul>
+        <li nz-menu-item *ngFor="let child of nav.child">
+          <a routerLink="product">{{ child }}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nz-dropdown-menu>

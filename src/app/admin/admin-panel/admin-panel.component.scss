@@ -1,0 +1,100 @@
+@import "../../../styles.scss";
+
+nz-header {
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  // background-color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.layout {
+  min-height: 100vh;
+  min-width: 375px;
+}
+
+.logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+  float: left;
+
+  border: 1px solid red;
+}
+
+.header-menu {
+  line-height: 64px;
+  display: none;
+
+  @include respond(medium) {
+    display: block;
+  }
+}
+
+.header-menu-btn {
+  height: 31px;
+  margin-right: 16px;
+
+  @include respond(medium) {
+    display: none;
+  }
+
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+  [nz-button] {
+    margin-right: 8px;
+    margin-bottom: 12px;
+    border: 0px;
+  }
+}
+
+.outer-content {
+  padding: 0 16px;
+  margin-top: 64px;
+
+  @include respond(medium) {
+    padding: 0 50px;
+    // font-size: 24px;
+  }
+}
+
+.inner-layout {
+  padding: 24px 0;
+  background: #fff;
+  margin-top: 16px;
+  min-height: 80vh;
+}
+
+.sider-menu {
+  height: 100%;
+}
+
+nz-sider {
+  display: none;
+
+  @include respond(medium) {
+    display: block;
+  }
+}
+
+.dropdown-menu {
+  display: block;
+
+  @include respond(medium) {
+    display: none;
+  }
+}
+.inner-content {
+  padding: 0 24px;
+  min-height: 280px;
+}
+
+nz-footer {
+  text-align: center;
+}

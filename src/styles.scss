@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@mixin respond($breakpoint) {
+  @if ($breakpoint == medium) {
+    @media screen and (min-width: 480px) {
+      @content;
+    }
+  }
+  @if ($breakpoint == large) {
+    @media screen and (min-width: 800px) {
+      @content;
+    }
+  }
+}
